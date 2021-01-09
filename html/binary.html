@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- #BeginTemplate "../../rapidtables.dwt" -->
+
+<head>
+<script async src="/lib/tagmng3.js"></script>
+
+<!-- #BeginEditable "doctitle" -->
+<title>Number conversions</title>
+<style>
+@media all and (max-width: 576px) {
+	.calc2 input[type=text], .calc2 input[type=number] { width:100%; padding:5px; }
+	.calc2 tr td:nth-child(2) {	width:160px; width:calc(100% - 130px); }
+	.calc2 tr td:nth-child(3) {	width: 30px; }
+}
+@media all and (min-width: 577px) {
+	.calc2 input[type=text], .calc2 input[type=number] { width:300px; }
+}
+</style>
+<!-- #EndEditable -->
+
+</head>
+
+<body>
+
+<div id="header">
+	<div>
+	<div id="logo" class="box">
+		<p>
+			<a href="/">RapidTables</a>
+		</p>
+	</div>
+	</div>
+</div>
+
+<div id="wrapper">
+
+<div id="nav">
+	<!-- #BeginEditable "doclink" -->
+	<a href="/">Home</a>&rsaquo;<a href="../index.html">Conversion</a>&rsaquo; Number conversion
+	<!-- #EndEditable -->
+</div>
+
+<div id="top-ad">
+	<!-- RT above responsive -->
+	<ins class="adsbygoogle adslot_1"
+	     data-ad-client="ca-pub-5335356106950684"
+	     data-ad-slot="6506963100"></ins>
+</div>
+	
+<div id="lcol">
+
+	<div id="doc">
+	<!-- #BeginEditable "doctext" -->
+	<h1>Number Conversion</h1>
+	<h2>Number base converter</h2>
+	<p>Enter a number in one of the text boxes and press the <i>Convert</i> button:</p>
+	 <form name="calcform" autocomplete="off">
+	<table class="calc2">
+	  <tbody>
+	  <tr>
+	    <td><label for="bin">Binary number:</label></td>
+		<td class="math"><input type="text" inputmode="numeric" id="bin" name="bin" autofocus></td>
+	    <td class="mathsymbol"><sub>2</sub></td>
+	    <td><input onclick="Convert_Bin()" type="button" value="Convert" class="btn"></td>
+	  </tr>
+	  <tr>
+	    <td><label for="oct">Octal number:</label></td>
+		<td class="math"><input type="text" inputmode="numeric" id="oct" name="oct"></td>
+	    <td class="mathsymbol"><sub>8</sub></td>
+	    <td><input onclick="Convert_Oct()" type="button" value="Convert" class="btn"></td>
+	  </tr>
+		<tr>
+	    <td><label for="dec">Decimal number:</label></td>
+		<td class="math"><input type="text" inputmode="numeric" id="dec" name="dec"></td>
+	    <td class="mathsymbol"><sub>10</sub></td>
+	    <td><input onclick="Convert_Dec()" type="button" value="Convert" class="btn"></td>
+	  </tr>
+	  <tr>
+	    <td><label for="x">Hex number:</label></td>
+		<td class="math"><input type="text" id="hex" name="hex"></td>
+	    <td class="mathsymbol"><sub>16</sub></td>
+	    <td><input onclick="Convert_Hex()" type="button" value="Convert" class="btn"></td>
+	  </tr>
+	  <tr>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	    <td><input type="reset" value="Reset" class="btn"></td>
+	  </tr>
+	  </tbody>
+	</table>
+	</form>
+	<h2>Number converters</h2>
+
+	
+
+
+
+
+<!-- #BeginEditable "docscript" -->
+	<script>
+	function setfocus() {
+		document.calcform.dec.focus();
+	}
+	function Convert_Bin() 
+	{
+		num = document.calcform.bin.value;
+		if( num=="" )
+			return;
+		num = parseInt(num,2);
+		document.calcform.oct.value = num.toString(8);
+		document.calcform.dec.value = num.toString(10);
+		num = num.toString(16);
+		document.calcform.hex.value = num.toUpperCase();
+	}
+	function Convert_Oct() 
+	{
+		num = document.calcform.oct.value;
+		if( num=="" )
+			return;
+		num = parseInt(num,8);
+		document.calcform.bin.value = num.toString(2);
+		document.calcform.dec.value = num.toString(10);
+		num = num.toString(16);
+		document.calcform.hex.value = num.toUpperCase();
+	}
+	function Convert_Dec() 
+	{
+		num = document.calcform.dec.value;
+		if( num=="" )
+			return;
+		num = parseInt(num,10);
+		if( num<0 ) {
+			if( num>=-32768 )
+				num+=65536;
+			else if( num>=-Math.pow(2,31))
+				num+=Math.pow(2,32);
+			else if( num>=-Math.pow(2,63) )
+				num+=Math.pow(2,64);
+		}
+		document.calcform.bin.value = num.toString(2);
+		document.calcform.oct.value = num.toString(8);
+		num = num.toString(16);
+		document.calcform.hex.value = num.toUpperCase();
+	}
+	function Convert_Hex() 
+	{
+		num = document.calcform.hex.value;
+		if( num=="" )
+			return;
+		num = parseInt(num,16);
+		document.calcform.bin.value = num.toString(2);
+		document.calcform.oct.value = num.toString(8);
+		document.calcform.dec.value = num.toString(10);
+	}
+	</script>
+<!-- #EndEditable -->
+
+</body>
+
+<!-- #EndTemplate -->
+
+</html>

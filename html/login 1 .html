@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>new</title>
+</head>
+<body>
+<form name="login">
+name
+<input type="text" name="one" id="new" plceholder="enter any number" /><br><br>
+password
+<input type="password" name="two" id="old" plceholder="enter any number" /><br><br>
+<input type="submit" id="hi" onclick="cpr(this.form)" />
+
+<input type="reset" value="cancel" />
+</form>
+<script language="javascript">
+
+function cpr(form){
+var x=document.getElementById('new').value;
+var y=document.getElementById('old').value;
+
+
+if ( x== y){
+window.open('navigation.htm')}
+else
+{
+alert("enter your passrord in the right way")	
+}
+}
+</script>
+</body>
+</html>
